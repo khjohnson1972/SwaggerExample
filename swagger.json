@@ -1,0 +1,172 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "ExampleAPI",
+        "description": "The REST API for this example.",
+        "contact": {
+            "name": "Kevin Johnson",
+            "email": "kevin@email.com"
+        }
+    },
+    "host": "api.yourapi.com",
+    "basePath": "/v1",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "api_key": {
+            "description": "The uuid key.",
+            "type": "apiKey",
+            "name": "apiKey",
+            "in": "header"
+        }
+    },
+    "tags": [
+        {
+            "name": "Tag1",
+            "description": "Tag example 1.\n\n"
+        },
+        {
+            "name": "Tag2",
+            "description": "Tag example 2.\n\n"
+        }
+    ],
+    "paths": {
+        "/Path/emailDelivery": {
+            "post": {
+                "tags":["Tag1"],
+                "description": "Updates or inserts the email.\n\n emailString max length 1000.",
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "/PathEmailDelivery object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PathEmailDeliveryObject"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successfully updated email delivery data.",
+                        "schema": {
+                            "$ref": "#/definitions/PathEmailDeliveryResponseObject"
+                        }
+                    },
+                    "400": {
+                        "description": "Errors found and 'valid = false'",
+                        "schema": {
+                            "$ref": "#/definitions/PathEmailDeliveryResponseObject"
+                        }
+                    }
+                }
+            }
+        },
+        "/PathApptupdate/appointmentRequest": {
+            "get": {
+                "description": "Appointment request example.",
+                "tags":["Tag2"],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "description": "The date in MM/DD/YYYY",
+                        "type": "string",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "name": "time",
+                        "description": "The appointment time for example 13:00:00.",
+                        "type": "string",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "name": "offset",
+                        "description": "The browser offset, for example 300",
+                        "required": true,
+                        "type": "number",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The response from the call.",
+                        "schema": {
+                            "$ref": "#/definitions/PathApptupdateAppointmentRequestResponseObject"
+                        }
+                    },
+                    "400": {
+                        "description": "Unsuccessful response success = false",
+                        "schema": {
+                            "$ref": "#/definitions/PathApptupdateAppointmentRequestResponseObject"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "PathApptupdateAppointmentRequestResponseObject": {
+            "title": "saveDefaultForm",
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean"
+                },
+                "errors": {
+                    "type": "object"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "PathEmailDeliveryObject": {
+            "description": "/PathEmailDelivery object",
+            "properties": {
+                "locationID": {
+                    "type": "string",
+                    "description": "The value of the location id (numbers and hyphen only). Max length 40",
+                    "maxLength": 40
+                },
+                "emailString": {
+                    "type": "string",
+                    "description": "A string of comma or semicolon separated emails. Max length 1000",
+                    "maxLength": 1000
+                }
+            },
+            "required": [
+                "locationID"
+            ]
+        },
+        "PathEmailDeliveryResponseObject": {
+            "title": "The response object.",
+            "type": "object",
+            "properties": {
+                "valid": {
+                    "type": "boolean"
+                },
+                "errorsArray": {
+                    "type": "object"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
