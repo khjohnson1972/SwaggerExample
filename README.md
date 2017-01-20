@@ -4,5 +4,5 @@ Just a very quick example swagger.json to get started with Swagger. I created th
 
 Tested across Swagger Editor and Swagger UI. I wanted to make sure I had a very basic working copy before expanding.
 
-The .pdf file is a copy of my slides that includes references to Swaggers resources and tutorials.
+The SwaggerPresentation.pdf file is a copy of my slides that includes references to Swaggers resources and tutorials.
 
