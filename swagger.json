@@ -113,6 +113,9 @@
                 "id": {
                     "type": "integer"
                 },
+                "success": {
+                    "type": "boolean"
+                },
                 "errors": {
                     "type": "object"
                 },
