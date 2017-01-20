@@ -75,44 +75,30 @@
                 }
             }
         },
-        "/PathApptupdate/appointmentRequest": {
+        "/Appointment/getAppointment": {
             "get": {
                 "description": "Appointment request example.",
                 "tags":["Tag2"],
                 "parameters": [
                     {
-                        "name": "date",
-                        "description": "The date in MM/DD/YYYY",
+                        "name": "id",
+                        "description": "An id for example",
                         "type": "string",
                         "in": "query",
                         "required": true
-                    },
-                    {
-                        "name": "time",
-                        "description": "The appointment time for example 13:00:00.",
-                        "type": "string",
-                        "in": "query",
-                        "required": true
-                    },
-                    {
-                        "name": "offset",
-                        "description": "The browser offset, for example 300",
-                        "required": true,
-                        "type": "number",
-                        "in": "query"
                     }
                 ],
                 "responses": {
                     "201": {
                         "description": "The response from the call.",
                         "schema": {
-                            "$ref": "#/definitions/PathApptupdateAppointmentRequestResponseObject"
+                            "$ref": "#/definitions/PathApptGetAppointmentRequestResponseObject"
                         }
                     },
                     "400": {
                         "description": "Unsuccessful response success = false",
                         "schema": {
-                            "$ref": "#/definitions/PathApptupdateAppointmentRequestResponseObject"
+                            "$ref": "#/definitions/PathApptGetAppointmentRequestResponseObject"
                         }
                     }
                 }
@@ -120,15 +106,18 @@
         }
     },
     "definitions": {
-        "PathApptupdateAppointmentRequestResponseObject": {
+        "PathApptGetAppointmentRequestResponseObject": {
             "title": "saveDefaultForm",
             "type": "object",
             "properties": {
-                "success": {
-                    "type": "boolean"
+                "id": {
+                    "type": "integer"
                 },
                 "errors": {
                     "type": "object"
+                },
+                "appointmentTime": {
+                    "type": "string"
                 },
                 "message": {
                     "type": "string"
