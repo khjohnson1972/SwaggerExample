@@ -75,7 +75,7 @@
                 }
             }
         },
-        "/Appointment/getAppointment": {
+        "/Appointment/getAppointment/{id}": {
             "get": {
                 "description": "Appointment request example.",
                 "tags":["Tag2"],
@@ -83,8 +83,8 @@
                     {
                         "name": "id",
                         "description": "An id for example",
-                        "type": "string",
-                        "in": "query",
+                        "type": "integer",
+                        "in": "path",
                         "required": true
                     }
                 ],
@@ -107,7 +107,7 @@
     },
     "definitions": {
         "PathApptGetAppointmentRequestResponseObject": {
-            "title": "saveDefaultForm",
+            "title": "getAppointmentResponse",
             "type": "object",
             "properties": {
                 "id": {
